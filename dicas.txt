@@ -14,7 +14,38 @@ pip3 install django
 django-admin.py startproject myproject
 
 /// rodar o projeto dentro do myproject
-python3 manager.py runserver
+python3 manage.py runserver
 
 //// criando um app dentro do myproject
-python3 manager.py startapp myapp
+python3 manage.py startapp myapp
+
+//// configurar setting do bd postgres
+'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "nome da base de dados",
+        'USER': "usuario do db",
+        'PASSWORD': "senha do db",
+        'HOST': "localhost",
+        'PORT': "",  # 5432 by default
+    }
+
+///// instalar plugin postgres
+sudo apt install python3-dev libpq-dev
+com activate do env: pip install psycopg2
+
+//// fazendo a migração para criar as tabelas basicas no banco
+python manage.py migrate
+
+//// realizar a migration dos models
+python manage.py makemigrations reviews
+
+
+//// mostrar o status dos modelos da migracao
+python manage.py showmigrations
+
+//// ver como a tabela foi gerada
+python manage.py sqlmigrate reviews 0001_initial
+
+
+//// criar a tabela do model
+python manage.py migrate reviews
