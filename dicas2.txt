@@ -1,0 +1,26 @@
+///// criar ambiente de env
+python3 -m venv my_env
+
+//// ativar o env
+source my_env/bin/activate
+
+//// desativar o env
+deactivate
+
+//// instalar django
+pip install "Django==3.0.*" ou "Django"
+
+//// criar o projeto 
+django-admin startproject mysite
+
+/// migração inicial
+python manage.py migrate
+
+/// rodar o projeto
+python manage.py runserver
+ou
+rodar projeto com porta especificas
+python manage.py runserver 127.0.0.1:8001 \--settings=mysite.settings
+
+/// criar uma aplicação
+python manage.py startapp blog 

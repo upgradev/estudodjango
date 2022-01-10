@@ -36,7 +36,7 @@ com activate do env: pip install psycopg2
 //// fazendo a migração para criar as tabelas basicas no banco
 python manage.py migrate
 
-//// realizar a migration dos models
+//// realizar a migration dos models criados
 python manage.py makemigrations reviews
 
 
@@ -47,5 +47,16 @@ python manage.py showmigrations
 python manage.py sqlmigrate reviews 0001_initial
 
 
-//// criar a tabela do model
+//// criar a tabela do model depois do makemigrations
 python manage.py migrate reviews
+
+//// executar um CRUD
+python manage.py shell
+>>>from reviews.models import Publisher
+>>>publisher = Publisher(name='Packt Publishing', website='https://
+www.packtpub.com', email='info@packtpub.com')
+>>>publisher.save() 
+
+e pelo jeito tambem
+>>> from reviews.models import Contributor
+>>> contributor = Contributor.objects.create(first_names="Rowel", last_names="Atienza", email="RowelAtienza@example.com")
